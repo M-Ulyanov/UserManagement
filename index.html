@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Панель управления пользователями - автор M.Ulyanov</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="js/script.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Панель управления пользователями 1.0</h1>
+		<div id="content-box">	
+			<a href="#" id="add_user_button" class="open-button">Добавить нового пользователя</a>
+			<div id="add_user_box">
+				<div id="add_user">
+					<div>
+						<label for="login">Уникальный логин:</label>
+						<input type="text" id="login" class="loginAdd">
+					</div>
+					<div>
+						<label for="name">Имя пользователя:</label>
+						<input type="text" id="name">
+					</div>
+					<div>
+						<label for="mail">Рабочий email:</label>
+						<input type="text" class="emailAdd" id="mail">
+					</div>
+					<div>
+						<label for="pass">Надежный пароль:</label>
+						<input type="password" id="pass">
+					</div>
+					<div>
+						<label for="access">Права доступа:</label>
+						<select id="access">
+							<option value="User">User</option>
+							<option value="Moder">Moder</option>
+							<option value="Admin">Admin</option>
+						</select>
+					</div>
+					<button id="new_user_button" type="input">Добавить</button>
+					<strong id="error_login">Логин занят!</strong>
+				</div>
+			</div>
+			<a href="#" id="del_user_button" class="open-button">Удаление пользователей</a>
+			<div id="delete_user_box">
+				<span id="error_no_id">ID не найдено!</span>
+				<span id="error_no_user">Введите ID!</span>
+				<label for="delete">Введите ID</label>
+				<input type="text" id="delete">
+				<button id="delete_user_button" type="input">Удалить</button>
+				<span>Обратите внимание, что удаленные пользователи не могут быть потом восстановлены!</span>
+			</div>
+		</div>
+		<div id="sidebar-box">
+			<a href="#" id="mess_user_button" class="open-button">Показать события</a>
+			<div id="message-box">
+				<button type="input" id="clear_message_button">Очистить события</button>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id="table_box">
+			<a href="#" id="show_user_button" class="open-button">Показать всех пользователей</a>
+			<div id="table_users_box">
+				<table id="table_users">
+					<tr>
+						<td>ID</td>
+						<td>Логин</td>
+						<td>Имя</td>
+						<td>Email</td>
+						<td>Пароль</td>
+						<td>Доступ</td>
+						<td class="editData">Изменить</td>
+						<td>Удалить</td>
+					</tr>
+				</table>
+				<button type="input" id="save">Сохранить</button>
+				<div id="info-box">
+					<span id="edit_user">Редактируем данные пользователей...</span>
+					<span id="save_user">Новые данные успешно сохранены!</span>
+			   </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

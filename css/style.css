@@ -1,0 +1,368 @@
+/*----------------------
+		Reset
+-----------------------*/
+*{
+	margin:0;
+	padding:0;
+}
+img{
+	border:none;
+}
+input{
+	
+	border:none;
+}
+ul{
+    list-style: none;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+}
+input,select,option{
+	outline:0;
+	border:0;
+}
+a{
+    text-decoration: none;
+}
+
+
+
+/*----------------------
+		General
+-----------------------*/
+body{
+	background: #353535;
+		overflow-y:scroll;
+}
+#wrapper{
+	max-width:960px;
+	position: relative;
+	margin: 0 auto;
+}
+.clear{
+	clear:both;
+}
+#wrapper h1{
+	background: #E2E2E2;
+	margin-bottom: 30px;
+	color: #FFF;
+	border-bottom: 3px solid rgb(199, 199, 199);
+	border-right: 2px solid rgb(199, 199, 199);
+	padding: 10px 10px;
+	font: 18px Arial;
+	text-shadow: 1px 1px 1px #9C9C9C;
+}
+
+
+
+/*----------------------
+		Content-Box
+-----------------------*/
+#content-box{
+	float:left;
+	width:46%;
+	background: #E2E2E2;
+	margin-bottom: 30px;
+	padding:10px 10px 0 10px;
+	border-bottom: 3px solid rgb(199, 199, 199);
+	border-right: 2px solid rgb(199, 199, 199);
+}
+
+/*----------Add_user_box-----------*/
+#add_user_box{
+	text-align: center;
+}
+#add_user{
+	padding-bottom: 25px;
+	position: relative;
+}
+#add_user > div{
+	margin-bottom: 10px;
+}
+#add_user label{
+	display: block;
+	margin-bottom: 5px;
+	font: 14px Arial;
+	color: #3F3F3F;
+	margin: 0 auto 5px;
+	font-weight: bold;
+}
+#add_user select{
+	height: 30px;
+	padding: 0px 10px;
+	border: 2px solid red;
+	border: 2px solid rgb(211, 211, 211);
+	cursor: pointer;
+	width: 100px;
+	height: 34px;
+}
+#add_user input, #delete{
+	border: 2px solid rgb(211, 211, 211);
+	padding: 7px;
+	width: 200px;
+}
+#content-box #add_user #error_login{
+	left: 120px;
+	top: 30px;
+	width: 270px;
+	font: bold 12px Arial;
+}
+#content-box #add_user .valid_data, 
+#content-box #add_user .invalid_data{
+	bottom: 5px;
+	display: none;
+	position: absolute;
+	text-transform: uppercase;
+	font: bold 10px Verdana;
+	left: 100px;
+	color: #63AF27;
+}
+#content-box #add_user .invalid_data{
+	color: #E95050;
+}
+#add_user_box{
+	display:none;
+}
+#add_user_box .error{
+	border: 2px solid rgb(247, 110, 105);
+	background: #FFF url(../img/icon-error.png) no-repeat 98% center;
+}
+#add_user_box .ok{
+	border: 2px solid #75C534;
+	background: #FFF url(../img/icon-ok.png) no-repeat 98% center;
+}
+
+#add_user_button,
+#show_user_button,
+#del_user_button, 
+#mess_user_button{
+	display: inline-block;
+	border-bottom: 2px solid #579E1E;
+	padding: 10px 0;
+	color: #FFF;
+	font: 14px Verdana;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.open-button{
+	background: #60aa24 url(../img/plus.png) no-repeat 99% center;
+}
+.close-button{
+	background: #60aa24 url(../img/minus.png) no-repeat 99% center;
+}
+#new_user_button,
+#delete_user_button, 
+#save,
+#clear_message_button{
+	background: rgb(247, 110, 105);
+	border: none;
+	padding: 9px 40px;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+	border-bottom: 2px solid rgb(226, 86, 86);
+	border-right: 1px solid rgb(226, 86, 86);
+	border-top: 2px solid rgb(247, 110, 105);
+	cursor: pointer;
+	outline: none;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px
+   -moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-webkit-transition: 0.5s;
+	transition: 0.5s
+}
+#new_user_button:hover,
+#delete_user_button:hover,
+#save:hover,
+#clear_message_button:hover{
+	background: rgb(238, 74, 68);
+	border-bottom: 2px solid rgb(209, 65, 65);
+	border-right: 1px solid rgb(209, 69, 69);
+	-moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s
+}
+
+/*----------Delete_user_box-----------*/
+#delete_user_box{
+	display: none;
+	text-align: center;
+	position: relative;
+}
+#delete_user_box label, #delete_user_box span{
+	font: bold 14px Arial;
+	color: #3F3F3F;
+}
+#delete_user_box span{
+	display:block;
+	font-size:12px;
+	margin:10px 0;
+}
+#delete_user_box span:before{
+	content:"*";
+	color:red;
+	margin-right:2px;
+}
+#delete{
+	padding: 6px;
+	width: 150px;
+}
+#delete_user_button,
+#save,
+#clear_message_button{
+	padding: 7px 25px 5px 25px;
+	font-size: 11px;
+}
+#delete_user_box  #error_no_id, 
+#delete_user_box  #error_no_user,
+#add_user #error_login 
+{
+	display:none;
+	position:absolute;
+	left: 160px;
+	top: -1px;
+	color: rgb(250, 25, 25);
+}
+#delete_user_box  #error_no_id:before,
+#delete_user_box  #error_no_user:before{
+	content: '';
+}
+
+/*----------------------
+		Sidebar-Box
+-----------------------*/
+#sidebar-box{
+	float:right;
+	width:46%;
+	background: #E2E2E2;
+	margin-bottom: 30px;
+	padding:10px;
+	border-bottom: 3px solid rgb(199, 199, 199);
+	border-right: 2px solid rgb(199, 199, 199)
+}
+#message-box{
+	display:none;
+	position: relative;
+	padding-bottom: 40px;
+
+}
+#open-message-box{
+	float:right;
+}
+.message-item{
+	padding: 5px 0;
+	border-bottom: 1px solid rgb(209, 209, 209);
+}
+.error_message,
+.valid_message,
+.delete_message,
+.edit_message{
+	text-transform: uppercase;
+	font: bold 10px Verdana, sans-serif;
+	padding: 4px 5px;
+}
+.message-item b{
+	color: #222;
+	font: bold 13px Verdana, sans-serif;
+}
+.error_message,
+.delete_message{
+	color: #E95050;
+}
+.valid_message,
+.edit_message{
+	color: #63AF27;
+}
+#clear_message_button{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+/*----------------------
+		Table-Box
+-----------------------*/
+#table_box{
+	background: #E2E2E2;
+	padding: 10px 10px 0 10px;
+	border-bottom: 3px solid rgb(199, 199, 199);
+	border-right: 2px solid rgb(199, 199, 199);
+}
+#table_users_box{
+	display: none;
+	overflow: hidden;
+	position: relative;
+}
+#table_users{
+	width:100%;
+}
+#table_users tr td{
+	background: rgb(248, 248, 248);
+	padding: 5px 0;
+	text-align: center;
+	font: bold 13px Arial;
+	color: #3F3F3F;
+}
+#table_users tr td input[type="text"]{
+	background: transparent;
+	outline: none;
+	border: none;
+	text-align: center;
+	color: #777777;
+	font-weight: bold;
+}
+#table_users tr td.active_edit input{
+	color: rgb(238, 65, 65);
+}
+#table_users .editData{
+	padding: 0 10px;
+}
+.cur-message {
+	padding-top: 9px;
+	display: inline-block;
+	min-width: 33px;
+	min-height: 24px;
+	text-align: center;
+	background: url(../img/icon-current.png);
+	font: bold 12px Arial;
+	color: #222;
+}
+.time {
+	margin-left: 7px;
+	min-width: 60px;
+	display: inline-block;
+	color: #4D4D4D;
+	text-transform: uppercase;
+	font: bold 11px Verdana;
+}
+.active_edit{
+	background: rgb(255, 255, 223) !important;
+}
+#save{
+	margin:10px 0;
+	float:right;
+}
+.edit, .del{
+	display:block;
+	text-indent: -9999px;
+	background: url(../img/edit.png) no-repeat center;
+}
+.del{
+	background: url(../img/delete.png) no-repeat center;
+}
+#table_box #edit_user,
+#table_box #save_user{
+	display: none;
+	position: absolute;
+	bottom:20px;
+	left: 0;
+	text-transform: uppercase;
+	font: bold 11px Verdana;
+	color: #63AF27;
+}
