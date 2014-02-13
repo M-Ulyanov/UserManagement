@@ -89,8 +89,6 @@ body{
 	font-weight: bold;
 }
 #add_user select{
-	height: 30px;
-	padding: 0px 10px;
 	border: 2px solid red;
 	border: 2px solid rgb(211, 211, 211);
 	cursor: pointer;
@@ -242,7 +240,7 @@ body{
 	width:46%;
 	background: #E2E2E2;
 	margin-bottom: 30px;
-	padding:10px;
+	padding:10px 10px 0 10px;
 	border-bottom: 3px solid rgb(199, 199, 199);
 	border-right: 2px solid rgb(199, 199, 199)
 }
@@ -281,7 +279,7 @@ body{
 }
 #clear_message_button{
 	position: absolute;
-	bottom: 0;
+	bottom: 4px;
 	right: 0;
 }
 
@@ -301,6 +299,7 @@ body{
 }
 #table_users{
 	width:100%;
+	table-layout: fixed;
 }
 #table_users tr td{
 	background: rgb(248, 248, 248);
@@ -319,6 +318,7 @@ body{
 }
 #table_users tr td.active_edit input{
 	color: rgb(238, 65, 65);
+	width: 100%;
 }
 #table_users .editData{
 	padding: 0 10px;
