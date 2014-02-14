@@ -2,7 +2,7 @@
 		//Глобальные переменные
 		var form = $('#add_user_box'),
 			table = $('#table_users_box'),
-			message = $('#message-box'),
+			message = $('#message-box'), 
 			current = 0,
 			userId = 0,
 			errorMessage  = '<span class="error_message">Ошибка при добавлении пользователя!</span>',
