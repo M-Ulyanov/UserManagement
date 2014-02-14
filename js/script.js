@@ -1,5 +1,4 @@
-$(function(){
-
+	$(function(){
 		//Глобальные переменные
 		var form = $('#add_user_box'),
 			table = $('#table_users_box'),
@@ -57,7 +56,8 @@ $(function(){
 								$('#login').removeClass('ok').addClass('error');						
 								$('#error_login').animate({
 									opacity : 'show'
-								});					
+								});
+								return false;					
 							}
 							else{	
 								$('#login').removeClass('error').addClass('ok');
@@ -92,7 +92,10 @@ $(function(){
 			$('#add_user span').remove();
 			$(invalidDatа).appendTo('#add_user').animate({
 				opacity : 'show',
-			});	
+			});
+			setTimeout(function(){
+	      		 numCounter('.message-item');
+	    	}, 820);	
 		}
 
 
@@ -110,10 +113,6 @@ $(function(){
 			var userMail = $('#mail').val();
 			var userPass = $('#pass').val();
 			var userAccess = $('#access').val();
-			$('<div></div>').addClass('message-item').appendTo(message)
-			$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
-				+'<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() + '</span>'
-				+ validMessage + '<b>' + userLogin + '</b>');
 			$('<tr></tr>').addClass('tr' + userId).appendTo('#table_users');
 			$('<td></td>').append($('<span class="id" </span>').text(userId)).appendTo('#table_users tr:last');
 			$('<td></td>').append($('<input class="login" type="text" disabled/>').val(userLogin)).appendTo('#table_users tr:last');
@@ -123,9 +122,17 @@ $(function(){
 			$('<td></td>').append($('<input class="access" type="text" disabled/>').val(userAccess)).appendTo('#table_users tr:last');
 			$('#table_users tr:last').append("<td class='editDate'>"+ '<a class="edit" href="#">EDIT</a>' +"</td>");
 			$('#table_users tr:last').append("<td>"+ '<a class="del" href="#">DEL</a>' +"</td>");
-			$('#table_users tr td:first-child').css('width', '50px')
+			$('#table_users tr td:first-child').css('width', '50px');
+
+			createDivItem();	
+			$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
+				+'<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() + '</span>'
+				+ validMessage + '<b>' + userLogin + '</b>');
+
+			numCounter('#table_users tr');
+		    numCounter('.message-item');
 		};	
-		
+
 
 		//Анимация блока удаления
 		$('#del_user_button').on('click', function(event){
@@ -147,40 +154,53 @@ $(function(){
 			var date = new Date();
 			var idDelete = '.tr' + $('#delete').val();
 			var userLogin= $(idDelete).find('.login').val();
-			if ( $(idDelete).length > 0){
+			if ($(idDelete).length > 0){
 				var conf = confirm('Удалить пользователя' +' ' + userLogin + '?');
 				if(!conf) return false;
 				$(idDelete).find('td').css('background', '#f44242');			
 				$(idDelete).find('td').animate({
 						'opacity' : '0'
-					}, 800)
+					}, 800);
 
 				setTimeout(function (){
 					$(idDelete).remove();
-				}, 800)
+				}, 800);				
+				setTimeout(function(){
+		      		 numCounter('#table_users tr');
+		    	}, 820);
 				current ++;
-					$('<div></div>').addClass('message-item').appendTo(message)
+					createDivItem()
 					$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
 					+ '<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() +
-					'</span>' + deleteMessage + '<b>' + userLogin + '</b>')		
+					'</span>' + deleteMessage + '<b>' + userLogin + '</b>');
+				setTimeout(function(){
+	      		 	numCounter('.message-item');
+	    		}, 820);		
 			}
 			else if($('#delete').val() == ''){
 				$('#error_no_user').animate({
 					opacity : 'show',
-				})
-				$('<div></div>').addClass('message-item').appendTo(message)
+				});
+				createDivItem();
 				$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
 					+'<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() + '</span>'
 					+ errorMessage2);
+	      		setTimeout(function(){
+	      		 	numCounter('.message-item');
+	    		}, 820);
+	    	
 			}
 			else{
 				$('#error_no_id').animate({
 					opacity : 'show',
-				})
-				$('<div></div>').addClass('message-item').appendTo(message)
+				});
+				createDivItem()
 				$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
 					+'<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() + '</span>'
 					+ errorMessage2);
+				setTimeout(function(){
+	      		 	numCounter('.message-item');
+	    		}, 820);
 			}
 		});
 
@@ -214,11 +234,17 @@ $(function(){
 			setTimeout(function(){
 				$(idDelete).remove();
 			}, 800)
+			setTimeout(function(){
+		      	numCounter('#table_users tr');
+		    	}, 820);
 			current ++;
-			$('<div></div>').addClass('message-item').appendTo(message)
-				$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
-				+ '<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() +
-				'</span>' + deleteMessage + '<b>' + userLogin + '</b>')	
+			createDivItem()
+			$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
+			+ '<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() +
+			'</span>' + deleteMessage + '<b>' + userLogin + '</b>');
+			setTimeout(function(){
+	      		 numCounter('.message-item');
+	    		}, 820);
 		});
 
 
@@ -227,7 +253,7 @@ $(function(){
 			current ++;
 			$(this).parents('tr').find('input').removeAttr("disabled").end()
 								 .children('td').not(':first-child, :last-child, .editDate').addClass('active_edit');
-			$('#info-box').find('span').hide()				 
+			$('#info-box').find('span').hide();				 
 			$('#edit_user').animate({
 					opacity : 'show',
 				})				 
@@ -235,23 +261,26 @@ $(function(){
 
 
 		//сохранение информации пользователя
-		$(document).on('click', '#save',function() {
+		$(document).on('click', '.activate-save',function() {
 			current ++;
 			$('#table_users input').attr('disabled', '');
 			$('#table_users tr td').removeClass('active_edit');
 			$('#info-box').find('span').hide()				 
 			$('#save_user').animate({
 					opacity : 'show',
-				})	
+				})
+			setTimeout(function(){
+	      		numCounter('.message-item');
+	    		}, 820);	
 			var date = new Date()
-			$('<div></div>').addClass('message-item').appendTo(message)
+			createDivItem()
 			$('.message-item:last').append('<span class="cur-message">' + current + '</span>' 
 				+'<span class="time">'+ date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() + '</span>'
 				+ editMessage);
 		});
 
 
-		//Анимация блока сообщений
+		//Анимация блока событий
 		$('#mess_user_button').on('click', function(event){
 			event.preventDefault();
 			if($(message).is(':hidden')){
@@ -262,15 +291,25 @@ $(function(){
 				$(message).slideUp(500);
 				$(this).removeClass('close-button').addClass('open-button').text('Показать события');
 			}
-		});
+		});				
+
+
+		//Создание элемента-обертки для каждого события
+		function createDivItem(){
+			$('<div></div>').addClass('message-item').appendTo(message);
+		}
 		
 
-		//Очистка сообщений
-		$('#clear_message_button').on('click', function(){
+		//Очистка событий
+		$(document).on('click','.clear_message_activate', function(){
 			$('.message-item').css('background', '#f44242').animate({'opacity' : '0'});
 			setTimeout(function(){
 				$('.message-item').remove()
-			}, 800)				
+			}, 800)
+			setTimeout(function(){
+	      		numCounter('.message-item');
+	    	}, 820);
+	    	current = 0;				
 		});
 
 	
@@ -282,6 +321,25 @@ $(function(){
 		});
 
 
+		//Активация и деактивация кнопок "сохранить и "очистить события"
+		function numCounter(elem){
+			if(elem == '#table_users tr'){
+				($(elem).length > 1) 
+					?
+					$('.deactivate-save').removeClass().addClass('activate-save')
+					:
+					$('.activate-save').removeClass().addClass('deactivate-save');
+			}
+			else if(elem == '.message-item'){
+				($(elem).length >= 1)
+					?
+					$('.clear_message_deactivate').removeClass().addClass('clear_message_activate')
+					:
+					$('.clear_message_activate').removeClass().addClass('clear_message_deactivate');
+			}
+		};
+
+
 		//Визуальное оформление таблицы
 		$('#table_users tr td:last-child').css('padding', '10px');
 		$('#table_users tr').eq(1).css({
@@ -289,6 +347,5 @@ $(function(){
 			'background': 'rgb(196, 196, 196)',
 		});
 		$('#table_users tr td:first-child').css('width', '50px')
-
 	
 	});	
